@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    src: url("fonts/space-age.ttf");
+    font-family: "spaceAge";
+}
+
+nav > ul {
+    list-style: none;
+}
+
+.fi-logo {
+    font-family: "spaceAge";
+    font-size: 40px;
+    color: #f4f4f4;
+}
+
+.round {
+    border-radius: 5px!important;
+}
+.top-round {
+    border-radius: 3px;
+}
+.bottom-round {
+    border-radius: 3px;
+}
+
+.login {
+    background-color: #f4f4f4!important;
+    margin: 5% 25%;
+}
+.login-header {
+    background: linear-gradient(45deg, #28a5f5, #1e87f0);
+    background-size: 1000% 1000%;
+
+    animation: rainbow 28s ease infinite;
+}
+.login-guest {
+    margin-bottom: -40px!important;
+    font-size: 12px!important;
+}
+
+.file-remove-modal {
+    width: 435px!important;
+    border-radius: 5px;
+}
+
+.main-section {
+    border-radius: 3px;
+    padding: 1% 2% 0.05% 2%;
+    margin: 1% 10% 1% 10%;
+    background-color: #f5f5f5;
+}
+
+.selected-icon {
+    background: rgba(187, 187, 187, 0.8);
+    color: #2c792c!important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.uk-card-title {
+    color: #f8f8f8!important;
+}
+
+.uk-navbar-container {
+    background: linear-gradient(45deg, #28a5f5, #1e87f0)!important;
+    background-size: 100% 100%;
+
+    animation: rainbow 2s ease infinite;
+}
+
+.uk-navbar-nav>li>a {
+    font-weight: 500;
+    color: #f4f4f4!important;
+}
+.uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus {
+    color: #d7d7d7!important;
+}
+
+.uk-nav-divider {
+    margin: 5px -25px!important;
+}
+.uk-navbar-dropdown {
+    padding: 10px 25px!important;
+}
+[class*=uk-navbar-dropdown-bottom] {
+    margin-top: 5px!important;
+}
+
+.uk-alert {
+    margin: 1% 25%;
+}
+
+.uk-notification-message {
+    border-radius: 5px;
+}
+
+/*
+*   Has to be tested if border-radius remains on remove model after removing the below two
+*/
+.uk-modal-header {
+    border-radius: 3px 3px 0 0!important;
+
+    background: linear-gradient(45deg, #1e87f0, #28a5f5)!important;
+    background-size: 100% 100%;
+
+    animation: rainbow 2s ease infinite;
+}
+
+.uk-placeholder {
+    margin: 0!important;
+}
+
+.uk-modal-title {
+    color: #f8f8f8!important;
+}
+
+.uk-modal-footer {
+    border-radius: 0 0 3px 3px!important;
+}
+
+.uk-button {
+    border-radius: 3px!important;
+}
+
+
+
+
+/* Coloured Animations - Hope they look good */
+@keyframes background-fade {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
