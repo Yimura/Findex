@@ -1,18 +1,35 @@
 <?php
 session_start();
 require '../user-info.php';
+require '../db_connect.php';
 
 if ($isGuest) {
     die("1");
 }
 
 // We have to calculate and update a user his remaining storage
-$userDir = strtolower($username)."/".$activePath;
-$directoryUsage = folderSize($userDir);
+if ($pathMode == 0) {
+    $userDir = "../../_users/". strtolower($username). "/". $activePath;
+    $directoryUsage = folderSize($userDir);
+}
+else {
+    $userDir = $activePath;
+    $directoryUsage = folderSize($userDir);
+}
+
+die($directoryUsage);
 if ($activePathId == 0)
 {
     $query = "UPDATE users SET usedPrimaryStorage='$directoryUsage' WHERE username='$username'";
     $conn->query($query);
+}
+else {
+    $query = "UPDATE userPath SET usedStorage='$directoryUsage' WHERE pid='$activePathId'";
+    $conn->query($query);
+}
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 $userRemainingStorage = $maxStorage - $directoryUsage;
 
