@@ -12,39 +12,23 @@ $(document).ready(function() {
         url: '/inc/action/upload-file.php',
         multiple: false,
 
-        beforeSend: function (e) {
-            UiKitNotification(e);
-        },
-        beforeAll: function (e) {
-            UiKitNotification(e);
-        },
-        load: function (e) {
-            UiKitNotification(e);
-        },
-        error: function (e) {
-            UiKitNotification(e);
-        },
-        complete: function (e) {
-            UiKitNotification(e);
+        complete: function (event) {
+            UiKitNotification(event.response);
         },
 
         loadStart: function (e) {
-            UiKitNotification(e);
-
             bar.removeAttribute('hidden');
             bar.max = e.total;
             bar.value = e.loaded;
         },
 
         progress: function (e) {
-            UiKitNotification(e);
 
             bar.max = e.total;
             bar.value = e.loaded;
         },
 
         loadEnd: function (e) {
-            UiKitNotification(e);
 
             bar.max = e.total;
             bar.value = e.loaded;

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     var lastItemId;
 
-    $("[id^='show-item_']").click(function() {
+    $(document).on("click", "[id^='show-item_']", function() {
         var attrId = $(this).attr('id');
         var itemId = attrId.split("_");
         lastItemId = itemId[itemId.length-1];

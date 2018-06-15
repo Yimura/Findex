@@ -33,23 +33,20 @@ $(document).ready(function ()
 		}
 	});
 
-    $('.dropdown-sibling').hover(function()
-    {
+    $(document).on('mouseenter', '.dropdown-sibling', function (event) {
         $(this).siblings(0).stop().fadeIn(200);
         //$(this).siblings(0).css('display', 'initial');
-    }, function() {
+    }).on('mouseleave', '.dropdown-sibling',  function(){
         $(this).siblings(0).stop().fadeOut(200);
         //$(this).siblings(0).css('display', 'none');
     });
 
-    $('.dropdown-fix').hover(function()
-    {
+    $(document).on('mouseenter', '.dropdown-fix', function (event) {
         $(this).stop(); // Cancel the fadeout event from above
         $(this).css('display', 'initial');
         // Set opacity, in some cases it was possible to semi-fade the menu
         $(this).css('opacity', '1');
-    }, function()
-    {
+    }).on('mouseleave', '.dropdown-fix',  function(){
         $(this).stop().fadeOut(200);
         //$(this).css('display', 'none');
     });

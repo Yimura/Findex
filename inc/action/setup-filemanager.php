@@ -3,6 +3,7 @@ session_start();
 
 if (isset($_SESSION['uid'])) {
     require '../user-info.php';
+    require '../functions.php';
 
     if (isset($_POST['setup']) == true && $_SESSION['uid'] != "-1") {
         if (isset($_SESSION['activeDirectory'])) {
@@ -74,7 +75,7 @@ foreach ($scandir as $item) {
         $isDir = true;
     }
     else {
-        $itemSize = filesize($item);
+        $itemSize = formatFileSize(filesize($item));
         $itemType = "copy";
         $isDir = false;
     }
@@ -87,12 +88,12 @@ foreach ($scandir as $item) {
                 <span class="uk-icon-button" uk-icon="<?php echo $itemType; ?>" name="<?php echo $itemType; ?>"></span>
             </a>
         </td>
-        <td class="uk-table-link">
+        <td class="uk-table-link overflow-hidden">
             <div class="uk-grid-collapse" uk-grid>
                 <a id="show-item_<?php echo $itemId; ?>" class="uk-link-reset uk-width-auto uk-margin-small-right" href="#file-info-modal" uk-toggle>
                     <span uk-icon="info"></span>
                 </a>
-                <a <?php if ($isDir) { ?> id="open-dir_<?php echo $itemId; ?>" <?php } else { ?> id="open-file_<?php echo $itemId; ?>" <?php } ?> class="uk-margin-small-left uk-link-reset uk-width-expand" <?php if (!$isDir) { ?> href="<?php echo $item; ?>"  <?php } ?>>
+                <a <?php if ($isDir) { ?> id="open-dir_<?php echo $itemId; ?>" <?php } else { ?> id="open-file_<?php echo $itemId; ?>" <?php } ?> title="<?php echo $pathinfo['basename']; ?>" class="uk-margin-small-left uk-link-reset uk-width-expand" <?php if (!$isDir) { ?> href="<?php echo $item; ?>"  <?php } ?>>
                     <?php echo $pathinfo['basename']; ?>
                     <input type="hidden" name="serverpath_<?php echo $itemId; ?>" value="<?php echo $siteDir; ?>">
                     <input type="hidden" name="realpath_<?php echo $itemId; ?>" value="<?php echo $realpath; ?>">
@@ -101,7 +102,7 @@ foreach ($scandir as $item) {
                 </a>
             </div>
         </td>
-        <td class="uk-text-center">
+        <td class="uk-text-center hide-table-row">
             <?php if (!$isGuest) { ?><a class="uk-link-reset"><span uk-icon="file-edit"></span></a>
             <a id="remove-file_<?php echo $itemId; ?>" class="uk-link-reset" href="#modal-confirm" uk-toggle><span uk-icon="trash"></span></a><?php } ?>
             <a id="copy-link_<?php echo $itemId; ?>" class="uk-link-reset"><span title="Copy filelink to clipboard" uk-icon="link"></span></a>

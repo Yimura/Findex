@@ -1,36 +1,14 @@
 <?php
 session_start();
 require '../user-info.php';
-require '../db_connect.php';
 
 if ($isGuest) {
     die("1");
 }
 
-// We have to calculate and update a user his remaining storage
-if ($pathMode == 0) {
-    $userDir = "../../_users/". strtolower($username). "/". $activePath;
-    $directoryUsage = folderSize($userDir);
-}
-else {
-    $userDir = $activePath;
-    $directoryUsage = folderSize($userDir);
-}
+require '../functions.php';
 
-die($directoryUsage);
-if ($activePathId == 0)
-{
-    $query = "UPDATE users SET usedPrimaryStorage='$directoryUsage' WHERE username='$username'";
-    $conn->query($query);
-}
-else {
-    $query = "UPDATE userPath SET usedStorage='$directoryUsage' WHERE pid='$activePathId'";
-    $conn->query($query);
-}
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$directoryUsage = updateUserRemainingStorage(); // Check functions.php file
 $userRemainingStorage = $maxStorage - $directoryUsage;
 
 $target_dir = $_SESSION['activeDirectory'];
@@ -47,13 +25,24 @@ if ($_FILES["files"]["size"][0] > $userRemainingStorage || $_FILES["files"]["siz
     // File too larger or too small, too small is to prevent file flooding with dummy files
     die("3");
 }
+
 // Allow certain file formats
-if($fileType == "html" && $fileType == "php") {
-    die("4");
+$query = "SELECT disallowed FROM settings";
+$result = $conn->query($query);
+while ($item = $result->fetch_assoc()) {
+    $disallowed = explode(",", $item['disallowed']);
+    foreach ($disallowed as $item) {
+        if($fileType == $item) {
+            die("4");
+        }
+    }
 }
 
 
 if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
+    // Update storage usage of user
+    updateUserRemainingStorage();
+
     die("5");
 } else {
     die("6");

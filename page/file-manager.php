@@ -1,4 +1,3 @@
-<div class="main-file-wrapper">
     <!-- File information Modal -->
     <section id="file-info-modal" class="uk-card" uk-modal>
         <div class="uk-modal-dialog">
@@ -77,8 +76,8 @@
             <thead>
                 <tr>
                     <th><a id="goup-dir" class="uk-link-reset uk-hidden"><span uk-icon="icon: arrow-up; ratio: 1.2"></span></a></th>
-                    <th>Name</th>
-                    <th class="uk-text-center">Tools</th>
+                    <th class="uk-text-center">Name</th>
+                    <th class="uk-text-center hide-table-row">Tools</th>
                     <th class="uk-text-center">Size</th>
                 </tr>
             </thead>

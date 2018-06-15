@@ -4,7 +4,8 @@ session_start();
 if (isset($_POST['guest'])) {
     if ($_POST['guest']) {
         $_SESSION['uid'] = "-1";
-        setcookie('isLoggedIn', true, time() + 86400, "/");
+        // Set expire time to 0 this way the cookie will expire at the end of session --> fixes bug relating to fetch-homedir
+        setcookie('isLoggedIn', true, 0, "/");
         die(true);
     }
 }
@@ -30,7 +31,7 @@ else {
 
         if (password_verify($pass, $password)) {
             $_SESSION['uid'] = $uid;
-            setcookie('isLoggedIn', true, time() + 86400, "/");
+            setcookie('isLoggedIn', true, 0, "/");
             die(true);
         }
         else {

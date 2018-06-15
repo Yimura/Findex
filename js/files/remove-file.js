@@ -12,7 +12,7 @@ $(document).ready(function() {
         $('#remove-file-confirm').prop("value", realpath);
     });
 
-    $("#confirm-remove-file").click(function() {
+    $(document).on("click", "#confirm-remove-file", function() {
         $.post("/inc/action/rm-file.php",
         {
             realpath: $('#remove-file-confirm').val(),

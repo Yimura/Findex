@@ -11,9 +11,7 @@ $(document).ready(function() {
                     pos: 'top-center',
                     timeout: 2500
                 });
-                setTimeout(function() {
-                    window.location.assign("/");
-                }, 1500);
+                window.location.assign("/");
             }
             else {
                 UIkit.notification({
@@ -57,9 +55,7 @@ $(document).ready(function() {
                     pos: 'top-center',
                     timeout: 2500
                 });
-                setTimeout(function() {
-                    window.location.assign("/");
-                }, 1500);
+                window.location.assign("/");
             }
             else if (succ == "2") {
                 UIkit.notification({

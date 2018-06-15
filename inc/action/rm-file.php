@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if ($_SESSION['uid'] != "-1") {
     if (isset($_POST['realpath'])) {
         $item = $_POST['realpath'];
@@ -13,10 +14,12 @@ if ($_SESSION['uid'] != "-1") {
         die("4");
     }
 
+    require '../functions.php';
+
     $permanent = $_POST['permanent'];
     if ($permanent) {
         if (is_dir($item)) {
-            if (rmdir($item)) {
+            if (rrmdir($item)) {
                 die("7");
             }
             else {
@@ -26,6 +29,10 @@ if ($_SESSION['uid'] != "-1") {
         else {
             if(unlink($item))
             {
+                require '../user-info.php';
+
+                updateUserRemainingStorage();
+
                 die("2");
             }
             else {

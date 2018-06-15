@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+    <!-- This product is licensed under the MIT license see https://github.com/Y1mura/FileIndexer for details
+        __  ___
+        \ \/ (_)___ ___  __  ___________ _
+         \  / / __ `__ \/ / / / ___/ __ `/
+         / / / / / / / / /_/ / /  / /_/ /
+        /_/_/_/ /_/ /_/\__,_/_/   \__,_/
+    -->
     <head>
         <meta charset="utf-8">
         <title>File Indexer: <?php echo $urlPath; ?></title>
@@ -7,6 +14,8 @@
         <meta name="theme-color" content="#1e87f0">
 
         <link rel="stylesheet" href="<?php echo $relativePath; ?>css/master.css">
+        <link rel="stylesheet" href="<?php echo $relativePath; ?>css/uikit-reset.css">
+        <link rel="stylesheet" href="<?php echo $relativePath; ?>css/mobile.css">
 
         <!-- UiKit CSS & JS -->
         <link rel="stylesheet" href="<?php echo $relativePath; ?>css/uikit.min.css" />

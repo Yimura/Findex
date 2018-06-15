@@ -1,5 +1,5 @@
-<div class="main-login-wrapper">
-    <section class="login uk-card uk-card-default uk-width-1-2">
+<div id="main-login-wrapper">
+    <section class="login uk-card uk-card-default">
         <div class="uk-card-header login-header top-round">
             <h3 class="uk-card-title">Login</h3>
         </div>
@@ -8,11 +8,11 @@
                 <div class="uk-child-width-1-2" uk-grid>
                     <div class="uk-inline">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
-                        <input id="login-username" class="uk-input round" type="text" placeholder="username">
+                        <input id="login-username" class="uk-input round" type="text" placeholder="Username">
                     </div>
                     <div class="uk-inline">
                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                        <input id="login-password" class="uk-input round" type="password" placeholder="password">
+                        <input id="login-password" class="uk-input round" type="password" placeholder="Password">
                     </div>
                 </div>
                 <button id="login-user" class="uk-button uk-button-primary uk-margin-medium-top uk-align-center uk-margin-remove-bottom" type="button" name="login-user">Login<span class="uk-margin-small-left" uk-icon="chevron-right"></span></button>
