@@ -1,0 +1,6 @@
+_public/*
+_users/*
+inc/db_connect.php
+
+!_public/.gitkeep
+!_users/.gitkeep

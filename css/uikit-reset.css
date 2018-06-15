@@ -1,0 +1,61 @@
+.uk-card-title {
+    color: #f8f8f8!important;
+}
+
+.uk-navbar-container {
+    background: linear-gradient(45deg, #28a5f5, #1e87f0)!important;
+    background-size: 100% 100%;
+
+    animation: rainbow 2s ease infinite;
+}
+
+.uk-navbar-nav>li>a {
+    font-weight: 500;
+    color: #f4f4f4!important;
+}
+.uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus {
+    color: #d7d7d7!important;
+}
+
+.uk-nav-divider {
+    margin: 5px -25px!important;
+}
+.uk-navbar-dropdown {
+    padding: 10px 25px!important;
+}
+[class*=uk-navbar-dropdown-bottom] {
+    margin-top: 5px!important;
+}
+
+.uk-alert {
+    margin: 1% 25%;
+}
+
+.uk-notification-message {
+    border-radius: 5px;
+}
+
+.uk-modal-header {
+    border-radius: 3px 3px 0 0!important;
+
+    background: linear-gradient(45deg, #1e87f0, #28a5f5)!important;
+    background-size: 100% 100%;
+
+    animation: rainbow 2s ease infinite;
+}
+
+.uk-placeholder {
+    margin: 0!important;
+}
+
+.uk-modal-title {
+    color: #f8f8f8!important;
+}
+
+.uk-modal-footer {
+    border-radius: 0 0 3px 3px!important;
+}
+
+.uk-button {
+    border-radius: 3px!important;
+}
