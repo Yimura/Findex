@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <!-- This product is licensed under the MIT license see https://github.com/Y1mura/FileIndexer for details
+    <!-- This product is licensed under the GPL-3.0 license see https://github.com/Y1mura/FileIndexer for details
         __  ___
         \ \/ (_)___ ___  __  ___________ _
          \  / / __ `__ \/ / / / ___/ __ `/
@@ -9,9 +9,12 @@
     -->
     <head>
         <meta charset="utf-8">
-        <title>File Indexer: <?php echo $urlPath; ?></title>
+        <title>Findex</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
         <meta name="theme-color" content="#1e87f0">
+
+        <link rel="icon" href="<?php echo $relativePath; ?>img/favicon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="<?php echo $relativePath; ?>img/favicon.png" type="image/x-icon" />
 
         <link rel="stylesheet" href="<?php echo $relativePath; ?>css/master.css">
         <link rel="stylesheet" href="<?php echo $relativePath; ?>css/uikit-reset.css">
@@ -27,6 +30,8 @@
         <script src="<?php echo $relativePath; ?>js/sources/jquery-3.3.1.min.js"></script>
         <!-- Cookies JS -->
         <script src="<?php echo $relativePath; ?>js/sources/js-cookie.js"></script>
+        <!-- Charts JS -->
+        <script src="<?php echo $relativePath; ?>js/sources/Chart.bundle.min.js"></script>
 
         <!-- Basic content setup -->
         <script src="<?php echo $relativePath; ?>js/content/get-homedir.js"></script>
@@ -40,8 +45,9 @@
         <script src="<?php echo $relativePath; ?>js/login/logout.js"></script>
         <!-- Hide public folder alert -->
         <script src="<?php echo $relativePath; ?>js/files/hide-alert.js"></script>
-        <!-- Navbar Fix JS -->
+        <!-- Navbar JS -->
         <script src="<?php echo $relativePath; ?>js/sources/dropdown-fix.js"></script>
+        <script src="<?php echo $relativePath; ?>js/other/search.js"></script>
 
         <?php if (!$isGuest) { ?>
         <!-- Upload files to the server -->

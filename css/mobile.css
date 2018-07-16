@@ -1,7 +1,18 @@
 /* ---- Navbar ---- */
+@media only screen and (min-width: 641px)  {
+    .mobile-nav {
+        display: none !important;
+    }
+}
 @media only screen and (max-width: 640px)  {
     .desktop-nav {
         display: none !important;
+    }
+    .main-section {
+        margin: 4% 0 !important;
+    }
+    .guest-alert {
+        margin: 4% 0 !important;
     }
 }
 
@@ -17,4 +28,11 @@
     .hide-table-row {
         display: none !important;
     }
+}
+
+/**
+* Non-overwrites
+*/
+.user-navbar {
+    padding: 2% 1%;
 }

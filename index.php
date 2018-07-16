@@ -27,6 +27,7 @@ else {
     <div id="whole-page-wrapper">
     <?php
     if (isset($_SESSION['uid'])) {
+        require 'inc/functions.php'; // Needed to calculate data in nav
         require 'page/template/nav.php';
         require 'page/file-manager.php';
     }

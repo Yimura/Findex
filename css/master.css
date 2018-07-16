@@ -51,6 +51,9 @@ nav > ul {
     margin: 1% 10% 1% 10%;
     background-color: #f5f5f5;
 }
+.dropdown-divider {
+    margin: 5px -25px!important;
+}
 
 /**
 *   Login page
@@ -72,8 +75,38 @@ nav > ul {
 }
 
 /**
+*   Navbar
+*/
+#navSearch {
+    border-left: 1px solid #e5e5e5;
+    margin: 1px;
+}
+#searchBox {
+    width: 250px;
+    border-color: #fff !important;
+}
+#searchDropdown {
+    width: 250px;
+    background-color: #f7f7f7;
+    box-shadow: 0px 1px 8px rgba(50,50,50,.1);
+}
+.searchCategoryTitle {
+    margin-left: -10px !important;
+    font-size: 14px !important;
+}
+.searchDivider {
+    margin: 5px -25px 12px -25px !important;
+}
+.searchResult {
+    margin-top: 20px;
+}
+
+/**
 *   File manager
 */
+.guest-alert {
+    margin: 1% 25%;
+}
 .file-remove-modal {
     width: 435px!important;
     border-radius: 5px;
@@ -81,6 +114,15 @@ nav > ul {
 .selected-icon {
     background: rgba(187, 187, 187, 0.8);
     color: #2c792c!important;
+}
+.storage-name {
+    color: #454545 !important;
+}
+.storage-icon {
+    position: absolute;
+}
+.storage-left {
+    font-size: 11px !important;
 }
 
 

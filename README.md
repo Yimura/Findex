@@ -16,26 +16,7 @@ or clone this project with any git tool.
 1. Extract all files
 1. Upload the files with your favourite FTP client
 1. Put the files into your DOC_ROOT of your webserver
-(You can upload it to any other folder on your webserver as long as you change the path accordingly below.)
-
-1. After that edit the file that manages directories on your hosting platform (Change /index):
-##### Apache 2.x: in `httpd.conf` or in the root directory's `.htaccess`
-```
-DirectoryIndex index.php index.html /index.php [L]
-```
-##### lighttpd 1.4: in `lighttpd.conf`
-```
-index-file.names += ("index.html", "index.php", "/index.php")
-```
-##### nginx 1.2: in `nginx.conf`
-```
-index  index.html  index.php  /index.php;
-```
-##### Cherokee 1.2: in `cherokee.conf`
-```
-vserver!1!directory_index = index.html,index.php,/index.php
-```
-6. If you've done that then you're almost done, head on over to yourdomain.example and you'll be automaticly represented with the installer
+1. If you've done that then you're almost done, head on over to yourdomain.example and you'll be automaticly represented with the installer
 
 ## Uploads and other problems
 If you're uploading large files to your personal server then don't forget to change your allowed file size upload.

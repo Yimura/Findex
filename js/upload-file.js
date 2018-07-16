@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(window).bind("dragenter", function() {
-        if (UIkit.toggle("#modal-upload", 'hidden')) {
+        if (!$("#modal-upload").hasClass("uk-open")) {
             UIkit.toggle("#modal-upload").toggle();
         }
     });
@@ -10,9 +10,10 @@ $(document).ready(function() {
     UIkit.upload('.js-upload', {
 
         url: '/inc/action/upload-file.php',
-        multiple: false,
+        multiple: true,
 
         complete: function (event) {
+            console.log(event);
             UiKitNotification(event.response);
         },
 
@@ -47,7 +48,7 @@ $(document).ready(function() {
     function UiKitNotification(succ) {
         if (succ == "1") {
             UIkit.notification({
-                message: '<span class="uk-margin-right" uk-icon="ban"></span>Guest aren\'t allowed to upload!?',
+                message: '<span class="uk-margin-right" uk-icon="ban"></span>Guests aren\'t allowed to upload!?',
                 status: 'danger',
                 pos: 'top-center',
                 timeout: 2500
@@ -63,7 +64,7 @@ $(document).ready(function() {
         }
         else if (succ == "3") {
             UIkit.notification({
-                message: '<span class="uk-margin-right" uk-icon="ban"></span>File is too large or below 50 bytes!',
+                message: '<span class="uk-margin-right" uk-icon="ban"></span>Storage full or file too small!',
                 status: 'danger',
                 pos: 'top-center',
                 timeout: 2500
@@ -88,6 +89,14 @@ $(document).ready(function() {
         else if (succ == "6") {
             UIkit.notification({
                 message: '<span class="uk-margin-right" uk-icon="ban"></span>Failed to upload file!',
+                status: 'danger',
+                pos: 'top-center',
+                timeout: 2500
+            });
+        }
+        else if (succ == "7") {
+            UIkit.notification({
+                message: '<span class="uk-margin-right" uk-icon="ban"></span>Some files conflicted!',
                 status: 'danger',
                 pos: 'top-center',
                 timeout: 2500

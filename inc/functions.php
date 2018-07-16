@@ -1,7 +1,10 @@
 <?php
 function formatFileSize($bytes)
     {
-        if ($bytes >= 1073741824)
+        if ($bytes >= 1099511627776) {
+            $bytes = number_format($bytes / 1099511627776, 2) . ' TB';
+        }
+        elseif ($bytes >= 1073741824)
         {
             $bytes = number_format($bytes / 1073741824, 2) . ' GB';
         }
@@ -103,7 +106,7 @@ function updateUserRemainingStorage()
         $conn->query($query);
     }
     else {
-        $query = "UPDATE userPath SET usedStorage='$directoryUsage' WHERE pid='$activePathId'";
+        $query = "UPDATE userpath SET usedStorage='$directoryUsage' WHERE pid='$activePathId'";
         $conn->query($query);
     }
 

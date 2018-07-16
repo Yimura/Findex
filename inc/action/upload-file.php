@@ -12,39 +12,57 @@ $directoryUsage = updateUserRemainingStorage(); // Check functions.php file
 $userRemainingStorage = $maxStorage - $directoryUsage;
 
 $target_dir = $_SESSION['activeDirectory'];
-$target_file = $target_dir . basename($_FILES["files"]["name"][0]);
-$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$filecount = count($_FILES["files"]["name"]);
+for ($i=0; $i < $filecount; $i++) {
+    $target_file = $target_dir . basename($_FILES["files"]["name"][$i]);
+    $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-// Check if file already exists
-if (file_exists($target_file)) {
-    die("2");
-}
-
-// Check file size
-if ($_FILES["files"]["size"][0] > $userRemainingStorage || $_FILES["files"]["size"][0] < 50) {
-    // File too larger or too small, too small is to prevent file flooding with dummy files
-    die("3");
-}
-
-// Allow certain file formats
-$query = "SELECT disallowed FROM settings";
-$result = $conn->query($query);
-while ($item = $result->fetch_assoc()) {
-    $disallowed = explode(",", $item['disallowed']);
-    foreach ($disallowed as $item) {
-        if($fileType == $item) {
-            die("4");
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        if ($filecount > 1) {
+            $error = "7";
+        }
+        else {
+            die("2");
         }
     }
-}
+
+    // Check file size
+    if ($_FILES["files"]["size"][$i] > $userRemainingStorage || $_FILES["files"]["size"][$i] < 50) {
+        // File too larger or too small, too small is to prevent file flooding with dummy files
+        die("3");
+    }
+
+    // Allow certain file formats
+    $query = "SELECT disallowed FROM settings";
+    $result = $conn->query($query);
+    while ($item = $result->fetch_assoc()) {
+        $disallowed = explode(",", $item['disallowed']);
+        foreach ($disallowed as $item) {
+            if($fileType == $item) {
+                if ($filecount > 1) {
+                    $error = "7";
+                }
+                else {
+                    die("4");
+                }
+            }
+        }
+    }
 
 
-if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
-    // Update storage usage of user
-    updateUserRemainingStorage();
+    if (move_uploaded_file($_FILES["files"]["tmp_name"][$i], $target_file)) {
+        if ($filecount == $i+1) {
+            // Update storage usage of user
+            updateUserRemainingStorage();
 
-    die("5");
-} else {
-    die("6");
+            if (isset($error)) {
+                die($error);
+            }
+            die("5");
+        }
+    } else {
+        die("6");
+    }
 }
 ?>

@@ -58,14 +58,14 @@
             </div>
             <div class="uk-modal-footer uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close uk-margin-right" type="button">Cancel</button>
-                <button class="uk-button uk-button-primary" type="button">Done</button>
+                <button class="uk-button uk-button-primary uk-modal-close" type="button">Close</button>
             </div>
         </div>
     </section>
     <?php } ?>
     <?php if ($isGuest && !isset($_COOKIE['alertPublicSeen'])) { ?>
     <!-- Public folder alert -->
-    <div uk-alert>
+    <div class="guest-alert" uk-alert>
         <a id="close-public-alert" class="uk-alert-close" uk-close></a>
         <h3>Notice</h3>
         <p>This is a public folder, only admins can add files in this folder!</p>

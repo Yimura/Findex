@@ -34,7 +34,9 @@ $(document).ready(function ()
 	});
 
     $(document).on('mouseenter', '.dropdown-sibling', function (event) {
-        $(this).siblings(0).stop().fadeIn(200);
+        var element = $(this).siblings(0);
+        UpdatePos(element);
+        element.stop().fadeIn(200);
         //$(this).siblings(0).css('display', 'initial');
     }).on('mouseleave', '.dropdown-sibling',  function(){
         $(this).siblings(0).stop().fadeOut(200);
@@ -50,4 +52,12 @@ $(document).ready(function ()
         $(this).stop().fadeOut(200);
         //$(this).css('display', 'none');
     });
+
+    function UpdatePos(element) {
+        var parentBounds = element.siblings(0).get(0).getBoundingClientRect();
+        var elementBounds = element.show().get(0).getBoundingClientRect();
+        element.hide(); // We have to hide the element again after showing it to calculate the position
+
+        element.css('left', parentBounds.left + (parentBounds.width/2) - (elementBounds.width / 2) + 'px');
+    }
 });
