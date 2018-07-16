@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    var
+        dragcount = 0,
+        droppedfiles,
+        upload = null;
+
     $(window)
         .bind("dragenter", function() {
             if (!$("#modal-upload").hasClass("uk-open")) {
@@ -11,7 +16,6 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    var dragcount = 0;
     $(document)
         .on('dragenter','.upload-zone', function() {
             dragcount++;
@@ -28,7 +32,17 @@ $(document).ready(function() {
         .on('drop', '.upload-zone', function(e) {
             e.preventDefault();
 
+            $(this).css("box-shadow", "");
 
+            droppedfiles = e.originalEvent.dataTransfer.files;
+
+            var form = new FormData();
+
+            for (var i = 0; i < droppedfiles.length; i++) {
+                form.append('files[]', droppedfiles[i]);
+            }
+
+            Upload(form);
 
             return false;
         });
@@ -44,8 +58,6 @@ $(document).ready(function() {
             $('#upload-progressbar2').parent().attr("hidden", "");
         }
     });
-
-    var upload = null;
 
     $('#upload-abort').click(function() {
         if (upload != null) {
@@ -66,10 +78,14 @@ $(document).ready(function() {
             form.append('files[]', $(this).get(0).files[i]);
         }
 
+        Upload(form);
+    });
+
+    function Upload(data) {
         upload = $.ajax({
             type: 'POST',
             url: '/inc/action/upload-file.php',
-            data: form,
+            data: data,
             processData: false,
             contentType: false,
             xhr: function() {
@@ -101,8 +117,8 @@ $(document).ready(function() {
                     $('#upload-progressbar2').parent().attr("hidden", "");
                 }, 500);
             }
-        })
-    });
+        });
+    }
 
     function UiKitNotification(succ) {
         if (succ == "1") {
