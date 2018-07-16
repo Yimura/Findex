@@ -1,48 +1,107 @@
 $(document).ready(function() {
-    $(window).bind("dragenter", function() {
-        if (!$("#modal-upload").hasClass("uk-open")) {
-            UIkit.toggle("#modal-upload").toggle();
+    $(window)
+        .bind("dragenter", function() {
+            if (!$("#modal-upload").hasClass("uk-open")) {
+                UIkit.toggle("#modal-upload").toggle();
+            }
+        });
+
+
+    $('.upload-zone').on("dragenter dragstart dragend dragleave dragover drag drop", function (e) {
+        e.preventDefault();
+    });
+
+    var dragcount = 0;
+    $(document)
+        .on('dragenter','.upload-zone', function() {
+            dragcount++;
+            $(this).css({
+                boxShadow: '0px 0px 20px 0px #323232'
+            });
+        })
+        .on('dragleave','.upload-zone', function() {
+            dragcount--;
+            if (dragcount === 0) {
+                $(this).css("box-shadow", "");
+            }
+        })
+        .on('drop', '.upload-zone', function(e) {
+            e.preventDefault();
+
+
+
+            return false;
+        });
+
+    $('#upload-close').click(function() {
+        if (upload != null) {
+            $('#upload-progressbar2').parent().removeAttr("hidden");
         }
     });
 
-    var bar = document.getElementById('upload-progressbar');
+    $('#upload-modal-trigger').click(function() {
+        if (!$('#upload-progressbar2').parent()[0].hasAttribute("hidden")) {
+            $('#upload-progressbar2').parent().attr("hidden", "");
+        }
+    });
 
-    UIkit.upload('.js-upload', {
+    var upload = null;
 
-        url: '/inc/action/upload-file.php',
-        multiple: true,
+    $('#upload-abort').click(function() {
+        if (upload != null) {
+            upload.abort();
+            UIkit.notification({
+                message: '<span class="uk-margin-right" uk-icon="check"></span>Upload successfully aborted',
+                status: 'success',
+                pos: 'top-center',
+                timeout: 2500
+            });
+            upload = null;
+        }
+    });
 
-        complete: function (event) {
-            console.log(event);
-            UiKitNotification(event.response);
-        },
-
-        loadStart: function (e) {
-            bar.removeAttribute('hidden');
-            bar.max = e.total;
-            bar.value = e.loaded;
-        },
-
-        progress: function (e) {
-
-            bar.max = e.total;
-            bar.value = e.loaded;
-        },
-
-        loadEnd: function (e) {
-
-            bar.max = e.total;
-            bar.value = e.loaded;
-        },
-
-        completeAll: function (e) {
-            UiKitNotification(e);
-
-            setTimeout(function () {
-                bar.setAttribute('hidden', 'hidden');
-            }, 1000);
+    $('.upload-zone input[type="file"]').change(function() {
+        var form = new FormData();
+        for (var i = 0; i < $(this).get(0).files.length; i++) {
+            form.append('files[]', $(this).get(0).files[i]);
         }
 
+        upload = $.ajax({
+            type: 'POST',
+            url: '/inc/action/upload-file.php',
+            data: form,
+            processData: false,
+            contentType: false,
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                // Upload progress
+                xhr.upload.addEventListener("progress", function(evt){
+                    if (evt.lengthComputable) {
+                        var percentComplete = (evt.loaded / evt.total) * 100;
+                        /* Debugging
+                        if (percentComplete >= 100) {
+                            console.log("Page request SENT");
+                        }*/
+                        $('#upload-progressbar').val(percentComplete);
+                        $('#upload-progressbar2').val(percentComplete);
+                    }
+                }, false);
+
+                return xhr;
+            },
+            beforeSend: function() {
+                $('#upload-progressbar').removeAttr("hidden");
+            },
+            success: function(data) {
+                UiKitNotification(data);
+            },
+            complete:function() {
+                setTimeout(function () {
+                    $('#upload-progressbar').attr("hidden", "");
+                    $('#upload-progressbar2').parent().attr("hidden", "");
+                }, 500);
+            }
+        })
     });
 
     function UiKitNotification(succ) {
@@ -85,6 +144,9 @@ $(document).ready(function() {
                 pos: 'top-center',
                 timeout: 2500
             });
+
+            ReloadFiles();
+            upload = null;
         }
         else if (succ == "6") {
             UIkit.notification({

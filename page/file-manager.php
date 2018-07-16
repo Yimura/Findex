@@ -46,19 +46,19 @@
                 <h2 class="uk-modal-title" id="view-file">Upload Files</h2>
             </div>
             <div class="uk-modal-body">
-                <div class="js-upload uk-placeholder uk-text-center">
+                <form class="upload-zone uk-placeholder uk-text-center">
                     <span uk-icon="icon: cloud-upload"></span>
                     <span class="uk-text-middle">Upload files by dropping them here or</span>
                     <div uk-form-custom>
-                        <input type="file" name="files[]">
+                        <input type="file" name="files[]" multiple>
                         <span class="uk-link">select your file</span>
                     </div>
-                </div>
+                </form>
                 <progress id="upload-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
             </div>
             <div class="uk-modal-footer uk-text-right">
-                <button class="uk-button uk-button-default uk-modal-close uk-margin-right" type="button">Cancel</button>
-                <button class="uk-button uk-button-primary uk-modal-close" type="button">Close</button>
+                <button id="upload-abort" class="uk-button uk-button-default uk-margin-right" type="button">Cancel</button>
+                <button id="upload-close" class="uk-button uk-button-primary uk-modal-close" type="button">Close</button>
             </div>
         </div>
     </section>
@@ -75,7 +75,7 @@
         <table id="item-table" class="uk-table uk-table-divider uk-table-hover uk-table-middle">
             <thead>
                 <tr>
-                    <th><a id="goup-dir" class="uk-link-reset uk-hidden"><span uk-icon="icon: arrow-up; ratio: 1.2"></span></a></th>
+                    <th><a id="goup-dir" class="uk-link-reset"><span uk-icon="icon: arrow-up; ratio: 1.2"></span></a></th>
                     <th class="uk-text-center">Name</th>
                     <th class="uk-text-center hide-table-row">Tools</th>
                     <th class="uk-text-center">Size</th>
@@ -86,4 +86,7 @@
             </tbody>
         </table>
     </section>
+    <div class="hidden-progressbar" hidden>
+        <progress id="upload-progressbar2" class="uk-progress" value="0" max="100"></progress>
+    </div>
 </div>

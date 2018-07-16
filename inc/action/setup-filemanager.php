@@ -21,8 +21,13 @@ if (isset($_SESSION['uid'])) {
             $_SESSION['activeDirectory'] = $rootDir;
         }
     }
-    else if(isset($_POST['openDir']) && $_SESSION['activeDirectory']) {
-        $newDir = $_SESSION['activeDirectory'].$_POST['openDir']."/";
+
+    else if(isset($_POST['openDir']) && isset($_SESSION['activeDirectory'])) {
+        $newDir = $_SESSION['activeDirectory'].$_POST['openDir'];
+        if (strlen($_POST['openDir']) > 0) {
+            $newDir = $newDir."/";
+        }
+
         if (!file_exists($newDir)) {
             die("2");
         }
@@ -33,6 +38,27 @@ if (isset($_SESSION['uid'])) {
             $rootDir = $checkHomeDir['path'];
         }
         else {
+            // Value is false here inside our function checkHomeDir we set the original homedir again if the user has tampered with path's (we can add banning later on if needed)
+            $rootDir = $checkHomeDir['path'];
+        }
+
+        $_SESSION['activeDirectory'] = $rootDir;
+    }
+
+    else if (isset($_POST['goupDir']) && isset($_SESSION['activeDirectory'])) {
+        $newDir = substr($_SESSION['activeDirectory'], 0, (strlen($_SESSION['activeDirectory'])-strlen(array_slice(explode("/", $_SESSION['activeDirectory']), -2)[0])-1));
+
+        if (!file_exists($newDir)) {
+            die("2");
+        }
+
+        $checkHomeDir = checkHomeDir($pathMode, $newDir, $username, $activePath, $isGuest);
+
+        if ($checkHomeDir['value']) {
+            $rootDir = $checkHomeDir['path'];
+        }
+        else {
+            // Value is false here inside our function checkHomeDir we set the original homedir again if the user has tampered with path's (we can add banning later on if needed)
             $rootDir = $checkHomeDir['path'];
         }
 

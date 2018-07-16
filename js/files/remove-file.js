@@ -24,7 +24,7 @@ $(document).ready(function() {
                 UIkit.toggle("#modal-confirm").toggle();
 
                 UIkit.notification({
-                    message: '<span class="uk-margin-right" uk-icon="trash"></span>Binning files is not yet supported...',
+                    message: '<span class="uk-margin-right" uk-icon="trash"></span>Binning file is not yet supported...',
                     status: 'success',
                     pos: 'top-center',
                     timeout: 2500
@@ -35,7 +35,7 @@ $(document).ready(function() {
                 UIkit.toggle("#modal-confirm").toggle();
 
                 UIkit.notification({
-                    message: '<span class="uk-margin-right" uk-icon="trash"></span>Successfully destroyed files',
+                    message: '<span class="uk-margin-right" uk-icon="trash"></span>Successfully destroyed file',
                     status: 'success',
                     pos: 'top-center',
                     timeout: 2500
@@ -43,7 +43,7 @@ $(document).ready(function() {
             }
             else if (succ == "3") {
                 UIkit.notification({
-                    message: '<span class="uk-margin-right" uk-icon="ban"></span>Files are write protected!',
+                    message: '<span class="uk-margin-right" uk-icon="ban"></span>File is write protected!',
                     status: 'danger',
                     pos: 'top-center',
                     timeout: 2500

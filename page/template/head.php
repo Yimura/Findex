@@ -35,8 +35,10 @@
 
         <!-- Basic content setup -->
         <script src="<?php echo $relativePath; ?>js/content/get-homedir.js"></script>
+        <script src="<?php echo $relativePath; ?>js/content/reload.js"></script>
         <!-- Opening directory -->
         <script src="<?php echo $relativePath; ?>js/content/open-dir.js"></script>
+        <script src="<?php echo $relativePath; ?>js/content/goup-dir.js"></script>
         <!-- Files JS -->
         <script src="<?php echo $relativePath; ?>js/files/show-item-info.js"></script>
         <script src="<?php echo $relativePath; ?>js/files/copy-2-clipboard.js"></script>

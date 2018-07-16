@@ -35,11 +35,11 @@ $(document).ready(function() {
                     $("#file-wrapper").html(succ);
                 }
             }
-        }).fail(function() {
-            console.log("%c[DIR-UP] Failed to load main active directory... Error: " + succ, 'color: red;');
+        }).fail(function(e) {
+            console.log("%c[DIR-UP] Failed to load main active directory... Error: ", 'color: red;');
         }).done(function() {
             console.log("%c[DIR-UP] POST request successfull!", 'color: green;');
-        }).always(function() {
+        }).always(function(e) {
             console.log("%c[DIR-UP] Finished POST request!", 'color: blue;');
         });
     });

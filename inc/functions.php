@@ -69,7 +69,7 @@ function checkHomeDir($fncPathMode = 0, $newDir, $fncUsername, $fncActivePath, $
 
         $array = [
             'value' => false,
-            'path'  => $userDir
+            'path'  => "../../_users/".$userDir
         ];
 
         return $array;

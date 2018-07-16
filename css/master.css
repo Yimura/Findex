@@ -124,6 +124,18 @@ nav > ul {
 .storage-left {
     font-size: 11px !important;
 }
+.hidden-progressbar {
+    position: fixed;
+    bottom: 15px;
+    width: 30%;
+    right: 15px;
+    background-color: #dfdfdf;
+    padding: 5px;
+    border-radius: 15px;
+}
+.hidden-progressbar > progress {
+    margin-bottom: 0 !important;
+}
 
 
 /* Coloured Animations - Hope they look good */
