@@ -13,8 +13,16 @@
                     <a class="dropdown-sibling">New</a>
                     <div class="uk-navbar-dropdown dropdown-fix">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li><a class="uk-link-reset" href="#"><span uk-icon="plus"></span><span class="uk-icon-button uk-margin-small-right" uk-icon="copy"></span>New File</a></li>
-                            <li><a class="uk-link-reset" href="#"><span uk-icon="plus"></span><span class="uk-icon-button uk-margin-small-right" uk-icon="folder"></span>New Folder</a></li>
+                            <li>
+                                <a class="uk-link-reset" href="#">
+                                    New File
+                                </a>
+                            </li>
+                            <li>
+                                <a class="uk-link-reset" href="#">
+                                    New Folder
+                                </a>
+                            </li>
                             <li class="uk-nav-divider dropdown-divider"></li>
                             <li><a id="upload-modal-trigger" class="uk-link-reset" href="#modal-upload" uk-toggle><span class="uk-margin-small-right" uk-icon="upload"></span>Upload File</a></li>
                         </ul>

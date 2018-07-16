@@ -88,8 +88,20 @@ $host = $_SERVER['HTTP_HOST'];
 
 $itemId = 0;
 $scandir = array_diff(preg_grep('/^([^.])/', scandir($rootDir)), array('.', '..'));
-foreach ($scandir as $item) {
 
+$directories = array();
+$files = array();
+foreach ($scandir as $item) {
+    if (is_dir($rootDir.$item)) {
+        $directories[] = $item;
+    }
+    else {
+        $files[] = $item;
+    }
+}
+$scandir = array_merge($directories, $files);
+
+foreach ($scandir as $item) {
     $item = $rootDir.$item;
 
     $realpath = realpath($item);
