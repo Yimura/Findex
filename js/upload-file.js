@@ -107,6 +107,11 @@ $(document).ready(function() {
             },
             beforeSend: function() {
                 $('#upload-progressbar').removeAttr("hidden");
+
+                // Show "Are you sure you want to leave this page" message to user when uploading
+                window.onbeforeunload = function() {
+                    return true;
+                };
             },
             success: function(data) {
                 UiKitNotification(data);
@@ -116,6 +121,9 @@ $(document).ready(function() {
                     $('#upload-progressbar').attr("hidden", "");
                     $('#upload-progressbar2').parent().attr("hidden", "");
                 }, 500);
+
+                // Reset "Are you sure you want to leave this page" message
+                window.onbeforeunload = null;
             }
         });
     }
