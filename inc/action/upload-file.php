@@ -12,6 +12,13 @@ $directoryUsage = updateUserRemainingStorage(); // Check functions.php file
 $userRemainingStorage = $maxStorage - $directoryUsage;
 
 $target_dir = $_SESSION['activeDirectory'];
+if (!file_exists($target_dir)) {
+    if(!mkdir($target_dir, 0765, true))
+    {
+        die("8");
+    }
+}
+
 $filecount = count($_FILES["files"]["name"]);
 for ($i=0; $i < $filecount; $i++) {
     $target_file = $target_dir . basename($_FILES["files"]["name"][$i]);

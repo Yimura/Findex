@@ -187,6 +187,17 @@ $(document).ready(function() {
                 pos: 'top-center',
                 timeout: 2500
             });
+
+            ReloadFiles();
+            upload = null;
+        }
+        else if (succ == "8") {
+            UIkit.notification({
+                message: '<span class="uk-margin-right" uk-icon="ban"></span>Failed to create upload directory!',
+                status: 'danger',
+                pos: 'top-center',
+                timeout: 2500
+            });
         }
         else {
             console.log(succ);

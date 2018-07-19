@@ -20,10 +20,12 @@ or clone this project with any git tool.
 
 ## Uploads and other problems
 If you're uploading large files to your personal server then don't forget to change your allowed file size upload.
-#### In `php.ini` file change these two values to something that you feel comfortable with.
+#### In `php.ini` file change these three values to something that you feel comfortable with.
 ```
-post_max_size=8196MM
-upload_max_filesize=8196MM
+post_max_size=8196M
+
+upload_max_filesize=8196M
+max_file_uploads=1000
 ```
 
 ## Translations
