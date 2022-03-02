@@ -1,7 +1,6 @@
 import Data from '../util/Data.js';
 
 import User from './user.js'
-import Project from './project.js'
 
 export default class API {
 
@@ -14,7 +13,6 @@ export default class API {
         Object.assign(this, Data);
 
         this.User = new User(this);
-        this.Project = new Project(this);
 
         
     }
