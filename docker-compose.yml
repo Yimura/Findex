@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  web:
+    container_name: taxshelter_frontend
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8000:80
+
+
+
+networks:
+  default:
+    name: websites
