@@ -24,7 +24,7 @@
 
     <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: false">
         <div class="uk-offcanvas-bar">
-            <div class="uk-flex uk-flex-between uk-flex-column">
+            <div class="uk-flex uk-flex-column uk-flex-between uk-height-1-1">
                 <div>
                     <ul class="uk-nav uk-nav-default">
                         <li class="uk-nav-header">Pages</li>
@@ -41,13 +41,60 @@
                         <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: file-text"></span>New file</a></li>
                         <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: folder"></span>New folder</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: upload"></span>Upload files</a></li>
+                        <li><a href="#modal-overflow" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: upload"></span>Upload files</a></li>
                     </ul>
                 </div>
-                <div>test</div>
+                <div>
+                    <ul class="uk-margin-medium-top uk-padding-remove">
+                        <div class="uk-flex uk-flex-between">
+                            <span>Storage</span>
+                            <span>10%</span>
+                        </div>
+                        <progress id="js-storage-progress" class="uk-progress uk-margin-remove" value="10" max="100"></progress>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon uk-margin-medium-top" uk-nav>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: user"></span>Profile</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: list"></span>My uploads</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: settings"></span>Settings</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: cog"></span>Admin panel</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Sign out</a></li>
+                    </ul>
+
+
+                </div>
             </div>
 
 
+        </div>
+    </div>
+
+    <div id="modal-overflow" uk-modal>
+        <div class="uk-modal-dialog">
+    
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+    
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Upload files</h2>
+            </div>
+    
+            <div class="uk-modal-body uk-flex uk-flex-center uk-flex-middle" uk-overflow-auto>
+                <div class="js-upload uk-placeholder uk-text-center">
+                    <span uk-icon="icon: cloud-upload"></span>
+                    <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+                    <div uk-form-custom>
+                        <input type="file" multiple>
+                        <span class="uk-link">selecting one</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button">Save</button>
+            </div>
+    
         </div>
     </div>
 
