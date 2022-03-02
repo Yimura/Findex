@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assests/css/uikit.min.css">
+    <link rel="stylesheet" href="./assests/css/master.css">
     <script src="./assests/js/lib/uikit.min.js"></script>
     <script src="./assests/js/lib/uikit-icons.min.js"></script>
 
@@ -13,7 +14,93 @@
 </head>
 <body class="">
 
+    <nav class="uk-navbar uk-margin uk-background-secondary">
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-toggle" href="#offcanvas-push" uk-toggle>
+                <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: false">
+        <div class="uk-offcanvas-bar">
+            <div class="uk-flex uk-flex-between uk-flex-column">
+                <div>
+                    <ul class="uk-nav uk-nav-default">
+                        <li class="uk-nav-header">Pages</li>
+                    </ul>
+        
+                    <ul class="uk-nav uk-nav-default" uk-switcher="connect: .uk-switcher">
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+        
+                    <ul class="uk-nav-default uk-nav-parent-icon uk-margin-medium-top" uk-nav>
+                        <li class="uk-nav-header">File</li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: file-text"></span>New file</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: folder"></span>New folder</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: upload"></span>Upload files</a></li>
+                    </ul>
+                </div>
+                <div>test</div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <ul class="uk-switcher">
+        <li>
+            <div class="uk-margin-medium-left uk-margin-medium-right">
+                <ul class="uk-breadcrumb">
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">test</a></li>
+                </ul>
+                <div class="uk-card uk-card-default">
     
+                    <table class="uk-table uk-table-responsive uk-table-hover uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Date modified</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="uk-flex uk-flex-center">
+                                    <span uk-icon="icon: folder"></span>
+                                </td>
+                                <td>Table Data</td>
+                                <td>Table Data</td>
+                                <td>Table Data</td>
+                                <td>Table Data</td>
+                                <td>
+                                    <ul class="uk-iconnav">
+                                        <li><a href="#" uk-icon="icon: download"></a></li>
+                                        <li><a href="#" uk-icon="icon: file-edit"></a></li>
+                                        <li><a href="#" uk-icon="icon: trash"></a></li>
+                                    </ul>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+
 
 </body>
 </html>
