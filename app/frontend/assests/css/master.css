@@ -1,0 +1,9 @@
+@font-face {
+    src: url("../fonts/space-age.ttf");
+    font-family: "spaceAge";
+}
+
+.custom-space-age {
+    font-family: 'spaceAge';
+}
+
