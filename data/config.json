@@ -9,6 +9,9 @@
     },
     "session": {
         "ttl": "172800"
+    },
+    "fs": {
+        "defaultPath": "./findex-files"
     }
     
 }

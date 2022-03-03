@@ -80,6 +80,7 @@ export default class User {
                 return request.reject(400);
             }
 
+            Modules.dirread.createDirectory(`/${user._id}`);
             return request.accept(user, 201);
 
 

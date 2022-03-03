@@ -26,6 +26,7 @@
   "dependencies": {
     "mime": "^3.0.0",
     "mongoose": "^6.2.4",
+    "recursive-readdir": "^2.2.2",
     "waffle-manager": "^0.1.1"
   }
 }

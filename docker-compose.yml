@@ -21,6 +21,7 @@ services:
     volumes:
       - ./frontend:/app/frontend
       - ./log:/app/log
+      - ./findex-files:/app/findex-files
 
     networks:
       - backend

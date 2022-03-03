@@ -24,5 +24,6 @@ export class Main {
 
     async init() {
         await Modules.load(this, resolvePath('./src/modules/'));
+
     }
 }

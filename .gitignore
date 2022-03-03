@@ -1,6 +1,8 @@
 log/*
 !log/!.gitkeep
 
+
 node_modules/
 .env
 ./data/auth.json
+findex-files/*
