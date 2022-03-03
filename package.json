@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Yimura/Node-Backend#readme",
   "dependencies": {
     "mime": "^3.0.0",
+    "mongoose": "^6.2.4",
     "waffle-manager": "^0.1.1"
   }
 }
