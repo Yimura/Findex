@@ -3,20 +3,22 @@ import http, { Server } from 'http';
 import { ModuleBuilder } from 'waffle-manager';
 import { Logger } from '@/src/util/Logger.js';
 import { HTTPRequest } from './structures/HTTPRequest.js';
-import Constants, { DefaultAllowedHeaders, DefaultAllowedMethods, SortFunction, WebServerConfig } from './util/Constants.js';
+import Constants, { DefaultResponseHeaders, DefaultAllowedHeaders, DefaultAllowedMethods, SortFunction, WebServerConfig } from './util/Constants.js';
 
 export const ModuleConstants = Constants;
 
 export const ModuleInfo = new ModuleBuilder('webServer');
 
 export const ModuleInstance = class WebServer extends EventEmitter {
-    constructor() {
+    constructor(main) {
         super();
 
         this._defaultHeaders = {};
         this._handlers = [];
         this._config = WebServerConfig;
         this._s = new Server();
+
+        this.additional_config = main.config.web_server;
     }
 
     get host() {
@@ -45,10 +47,11 @@ export const ModuleInstance = class WebServer extends EventEmitter {
     }
 
     buildHeaders() {
-        this._defaultHeaders = {
-            'Access-Control-Allow-Headers': DefaultAllowedHeaders.join(','),
-            'Access-Control-Allow-Methods': DefaultAllowedMethods.join(',')
-        };
+        this._defaultHeaders['Access-Control-Allow-Headers'] = DefaultAllowedHeaders.join(',');
+        this._defaultHeaders['Access-Control-Allow-Methods'] = DefaultAllowedMethods.join(',');
+        this._defaultHeaders['Access-Control-Allow-Headers'] += `,${this.additional_config.allowed_headers.join(',')}`;
+
+        console.log(this._defaultHeaders);
     }
 
     cleanup() {
@@ -58,6 +61,8 @@ export const ModuleInstance = class WebServer extends EventEmitter {
     handlePreflight(req, res) {
         if (req.method.toUpperCase() !== 'OPTIONS')
             return false;
+
+        
         res.writeHead(204, this._defaultHeaders);
         res.end();
 
@@ -86,7 +91,6 @@ export const ModuleInstance = class WebServer extends EventEmitter {
     async onRequest(request, response) {
         if (this.handlePreflight(request, response))
             return;
-
         const httpRequest = new HTTPRequest(request, response);
         for (const [ path, handler ] of this._handlers) {
             if (httpRequest.path.startsWith(path)) {

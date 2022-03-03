@@ -1,5 +1,6 @@
 import http from 'http';
-import { HttpResponseCode } from '../util/Constants.js';
+import { DefaultResponseHeaders, HttpResponseCode } from '../util/Constants.js';
+import { loadJson } from '@/src/util/Util.js';
 
 export class HTTPRequest {
     _body
@@ -82,7 +83,10 @@ export class HTTPRequest {
     /**
      * @returns {Object} The parsed body as a JSON
      */
-    async json() {
+    async json(data = null) {
+        if (data) {
+
+        }
         try {
             return JSON.parse(await this.body());
         } catch (error) {
@@ -100,7 +104,10 @@ export class HTTPRequest {
         if (code < 200 || code > 299)
             throw new RangeError('The HTTP response code for HTTPRequest#success needs to be between 200 and 299.');
 
-        this.res.writeHead(code, {});
+
+        if (typeof(body) !== 'string') body = JSON.stringify(body);
+        const headers = Object.assign({}, DefaultResponseHeaders);
+        this.res.writeHead(code, headers);
         this.res.end(body);
 
         return true;
