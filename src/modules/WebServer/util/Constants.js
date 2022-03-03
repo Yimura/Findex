@@ -1,5 +1,9 @@
 export const SortFunction = (a, b) => b[0].length - a[0].length;
 
+export const DefaultResponseHeaders = {
+    "Content-Type": "application/json"
+};
+
 export const DefaultAllowedHeaders = [
     'Accept',
     'Access-Control-Allow-Headers',
