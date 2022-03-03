@@ -1,0 +1,14 @@
+{
+    "web_server": {
+        "allowed_headers": [
+            "Authorization"
+        ],
+        "allowed_origins": [
+            "http://localhost:8080"
+        ]
+    },
+    "session": {
+        "ttl": "172800"
+    }
+    
+}

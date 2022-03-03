@@ -1,3 +1,6 @@
-.env/
+log/*
+!log/!.gitkeep
 
-data/auth.json
+node_modules/
+.env
+./data/auth.json

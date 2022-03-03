@@ -1,14 +1,30 @@
-version: "3.9"
+version: '3.9'
 services:
-  web:
-    container_name: taxshelter_frontend
-    build: .
+  mongo:
+    image: mongo
+    container_name: findex-mongo
     restart: unless-stopped
+    env_file:
+      - .env
     ports:
-      - 8000:80
+      - 27017:27017
+    networks:
+      - backend
+    volumes:
+      - /var/mongodb:/data/db
 
+  node_backend:
+    container_name: findex-backend
+    build: .
+    ports:
+      - 8080:8080
+    volumes:
+      - ./frontend:/app/frontend
+      - ./log:/app/log
 
+    networks:
+      - backend
 
 networks:
-  default:
-    name: websites
+  backend:
+    driver: bridge
